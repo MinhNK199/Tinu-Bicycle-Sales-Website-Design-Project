@@ -99,7 +99,12 @@
                                                             
                                                         <td>
                                                             <div class="hstack gap-3 flex-wrap">
-                                                                <a href="?act=chi-tiet-lien-he" class="link-success fs-15"><i class="ri-eye-2-line"></i></a>
+                                                                <a href="?act=chi-tiet-lien-he&lien_he_id=<?= $lienHe['id'] ?>" class="link-success fs-15">
+                                                                    <i class="ri-eye-2-line"></i>
+                                                                </a>
+                                                                <a href="?act=form-sua-lien-he&lien_he_id=<?= $lienHe['id'] ?>" class="link-success fs-15">
+                                                                    <i class="ri-edit-2-line"></i>
+                                                                </a>
                                                                 <form action="?act=xoa-lien-he" method="POST"
                                                                 onsubmit = "return confirm('ban co muon xo khong?')">
                                                                     <input type="hidden" name="lien_he_id" value="<?= $lienHe['id'] ?>">

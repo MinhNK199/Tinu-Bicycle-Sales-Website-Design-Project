@@ -101,7 +101,7 @@
                                                                         <span class="badge bg-danger">Không hiển thị</span>
                                                                     <?php endif; ?>
                                                                 </td>
-
+                                                                        
                                                                 <td>
                                                                     <div class="hstack gap-3 flex-wrap">
                                                                         <a href="?act=form-sua-banner&banner_id=<?= htmlspecialchars($banNer['id']) ?>" class="link-success fs-15">

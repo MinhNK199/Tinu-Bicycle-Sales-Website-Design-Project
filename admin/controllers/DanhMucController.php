@@ -53,7 +53,12 @@ class DanhMucController{
     
     //     require_once 'views/danhmucs/list_danh_muc.php'; //Truyền biến coKetQua vào view
     // }
-    // ham xu ly them CSDL
+    // ham xu ly them CSDL'
+
+    public function create() {
+        require_once 'views/danhmucs/create_danh_muc.php';
+    }
+
     public function store(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //lay ra du lieu

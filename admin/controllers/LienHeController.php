@@ -20,58 +20,85 @@ class LienHeController{
         
     }
 
-    // // ham hien thi form them
-    // public function create(){
-
-    //     require_once 'views/lienhes/create_lien_he.php';
-    // }   
-    
-    // // ham xu ly them CSDL
-    // public function store(){
-    //     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    //         //lay ra du lieu
-    //         $ten_danh_muc = $_POST['ten_danh_muc'];
-    //         $trang_thai = $_POST['trang_thai'];
-
-    //         //validate
-
-    //         $errors = [];
-    //         if(empty($ten_lien_he)){
-    //             $errors['ten_lien_he'] = "ten lien he khong duoc de trong";
-    //         }
-
-    //         if(empty($trang_thai)){
-    //             $errors['trang_thai'] = "trang thai khong duoc de trong";
-    //         }
-
-    //         // them du lieu
-    //         if(empty($errors)){
-    //             //neu ko co loi thi them du lieu
-    //             //them vao CSDLgit
-    //             $this->modelLienHe->postData($ten_danh_muc, $trang_thai);
-
-    //             unset($_SESSION['errors']);
-    //             header('location: ?act=lien-hes');
-    //             exit();
-    //         }else{
-    //             $_SESSION['errors'] = $errors;
-    //             header('location: ?act=form-add-lien-he');
-    //             exit();
-    //         }
-    //     }
-    // }
-
-    // ham hien thi form sua
     public function details(){
-        // lay thong tin chi tiet cua danh muc
-        $lienHes = $this->modelLienHe->getAll();
-        require_once 'views/lienhes/chi_tiet_lien_he.php';
-
+        // Lấy ID của liên hệ từ URL
+        $id = $_GET['lien_he_id'];
+    
+        // Lấy dữ liệu chi tiết của liên hệ từ model
+        $lienHe = $this->modelLienHe->getDetailData($id);
+    
+        // Kiểm tra nếu không tìm thấy 
+        if (!$lienHe) {
+            echo "Không tìm thấy bài viết";
+            return;
+        } else {
+            // Truyền dữ liệu vào view 
+            require_once 'views/lienhes/chi_tiet_lien_he.php';
+        }
+}
+    
+    // ham hien thi form sua
+    public function edit(){
+        if (isset($_GET['lien_he_id'])) {
+            $id = $_GET['lien_he_id'];
+            $lienHe = $this->modelLienHe->getDetailData($id);
+            // Kiểm tra nếu không tìm thấy bài viết
+            if (!$lienHe) {
+                echo "Không tìm thấy bài viết";
+                return;
+            }
+            require_once 'views/lienhes/sua_lien_he.php';
+        } else {
+            echo "ID bài viết không hợp lệ.";
+        }
     }
+    // // ham hien thi form sua
+    // public function details(){
+    //     // lay thong tin chi tiet cua danh muc
+    //     $lienHes = $this->modelLienHe->getAll();
+    //     require_once 'views/lienhes/chi_tiet_lien_he.php';
+
+    // }
 
     // ham xu ly cap nhat du lieu vao CSDL
     public function update(){
-        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['id'])) {
+                $id = $_POST['id'];
+                $email = $_POST['email'];
+                $noi_dung = $_POST['noi_dung'];
+                $ngay_tao = $_POST['ngay_tao'];
+                $trang_thai = $_POST['trang_thai'];
+    
+                // Validate
+                $errors = [];
+                if (empty($email)) {
+                    $errors['email'] = "Email liên hệ không được để trống";
+                }
+                if (empty($noi_dung)) {
+                    $errors['noi_dung'] = "Nội dung không được để trống";
+                }
+                if (empty($ngay_tao)) {
+                    $errors['ngay_tao'] = "Ngày tạo không được để trống";
+                }
+                if (empty($trang_thai)) {
+                    $errors['trang_thai'] = "Trạng thái không được để trống";
+                }
+    
+                // Nếu không có lỗi, cập nhật vào CSDL
+                if (empty($errors)) {
+                    $this->modelLienHe->updateData($id, $email, $noi_dung, $ngay_tao, $trang_thai);
+                    header('location: ?act=lien-hes');
+                    exit();
+                } else {
+                    $_SESSION['errors'] = $errors;
+                    header('location: ?act=form-sua-lien-he');
+                    exit();
+                }
+            } else {
+                echo "ID không hợp lệ.";
+            }
+        }
     }
 
     // ham xoa du lieu

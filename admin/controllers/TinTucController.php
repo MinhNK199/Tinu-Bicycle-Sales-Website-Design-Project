@@ -33,7 +33,7 @@ class TinTucController{
         $noi_dung = $_POST['noi_dung'];
         $ngay_dang = $_POST['ngay_dang'];
         $trang_thai = $_POST['trang_thai'];
-        
+        $hinh_anh = $_POST['hinh_anh'];
         // Validate
         $errors = [];
         if(empty($tieu_de)){

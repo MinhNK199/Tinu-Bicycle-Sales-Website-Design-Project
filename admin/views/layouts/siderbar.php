@@ -29,14 +29,14 @@
             <span class="d-flex align-items-center gap-2">
                 <img class="rounded header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
                 <span class="text-start">
-                    <span class="d-block fw-medium sidebar-user-name-text">Anna Adame</span>
+                    <span class="d-block fw-medium sidebar-user-name-text"><?= $_SESSION['user_admin'] ?></span>
                     <span class="d-block fs-14 sidebar-user-name-sub-text"><i class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span class="align-middle">Online</span></span>
                 </span>
             </span>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
-            <h6 class="dropdown-header">Welcome Anna!</h6>
+            <h6 class="dropdown-header">Welcome <?= $_SESSION['user_admin'] ?>!</h6>
             <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
             <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
         </div>
@@ -50,7 +50,7 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Quản lý</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="?act=/">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
@@ -107,7 +107,12 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="?act=nguoi-dungs" class="nav-link" data-key="t-sweet-alerts">
-                                    Danh sách
+                                    Danh sách tai khoan admin
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="?act=khach-hangs" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách tai khoan khach hang
                                 </a>
                             </li>
                             
@@ -116,7 +121,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarBanner" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarBanner">
-                        <i class="ri-user-line"></i> <span data-key="t-advance-ui">Quản lý Banner</span>
+                        <i class="ri-image-line"></i> <span data-key="t-advance-ui">Quản lý Banner</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarBanner">
                         <ul class="nav nav-sm flex-column">
@@ -146,7 +151,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarSanPham" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSanPham">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quan ly san pham </span>
+                        <i class="ri-motorbike-line"></i> <span data-key="t-advance-ui">Quan ly san pham </span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarSanPham">
                         <ul class="nav nav-sm flex-column">
@@ -161,12 +166,27 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebar" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebar">
-                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Quan ly Khuyen Mai </span>
+                        <i class="ri-file-line"></i> <span data-key="t-advance-ui">Quan ly Khuyen Mai </span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebar">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="?act=khuyen-mais" class="nav-link" data-key="t-sweet-alerts">
+                                    Danh sách
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarDonHang" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDonHang">
+                        <i class="ri-folder-line"></i> <span data-key="t-advance-ui">Quan ly Don Hang </span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarDonHang">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=don-hangs" class="nav-link" data-key="t-sweet-alerts">
                                     Danh sách
                                 </a>
                             </li>

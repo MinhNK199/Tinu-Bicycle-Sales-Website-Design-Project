@@ -31,76 +31,31 @@
         require_once "views/layouts/siderbar.php";
         ?>
         
-        <!-- Left Sidebar End -->
-        <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
-
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
         <div class="main-content">
-
             <div class="page-content">
                 <div class="container-fluid">
-                     <!-- start page title -->
-                     <div class="row">
+                    <div class="row">
                         <div class="col-12">
-                            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">Quản lý liên hệ khách hàng</h4>
-
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">liên hệ khách hàng</li>
-                                    </ol>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title"><?= $lienHe['email'] ?></h4>
                                 </div>
-
+                                <div class="card-body">
+                                    <p><strong>Ngày đăng: </strong><?= $lienHe['ngay_tao'] ?></p>
+                                    <p><strong>Trạng thái: </strong>
+                                        <?= $lienHe['trang_thai'] == 1 ? '<span class="badge bg-success">Hiển thị</span>' : '<span class="badge bg-danger">Không hiển thị</span>' ?>
+                                    </p>
+                                    <p><strong>Nội dung: </strong></p>
+                                    <div>
+                                        <?= $lienHe['noi_dung'] ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- end page title -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="h-100">
-                                <a href="?act=lien-hes" class="link-success fs-15"><i class=" bx bx-left-arrow-alt"></i></a>
-                            <div class="card">
-                                <div class="card-header align-items-center d-flex"> 
-                                    <h4 class="card-title mb-0 flex-grow-1">Chi tiết nội dung liên hệ khách hàng</h4>
-                                </div><!-- end card header -->
-
-                                <div class="card-body">
-                                    <div class="live-preview">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-nowrap align-middle mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">STT</th>
-                                                        <th scope="col">Nôi dung</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody><?php foreach ($lienHes as $index => $lienHe) : ?>
-                                                    <tr>
-                                                        <td class="fw-medium"><?= $index + 1 ?></td>
-                                                        <td><?= $lienHe['noi_dung'] ?></td>
-                                                    </tr>
-                                                    <?php endforeach ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    
-                                </div><!-- end card-body -->
-                            </div><!-- end card -->
-
-                            </div> <!-- end .h-100-->
-
-                        </div> <!-- end col -->
-                    </div>
-
                 </div>
-                <!-- container-fluid -->
             </div>
-            <!-- End Page-content -->
+        </div>
 
             <footer class="footer">
                 <div class="container-fluid">
